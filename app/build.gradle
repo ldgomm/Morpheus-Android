@@ -1,16 +1,20 @@
 plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
+
+    id 'kotlin-kapt'
+    id 'dagger.hilt.android.plugin'
+    id 'kotlinx-serialization'
 }
 
 android {
     namespace 'me.ldgomm.morpheus'
-    compileSdk 32
+    compileSdk 33
 
     defaultConfig {
         applicationId "me.ldgomm.morpheus"
         minSdk 29
-        targetSdk 32
+        targetSdk 33
         versionCode 1
         versionName "1.0"
 
@@ -48,16 +52,100 @@ android {
 
 dependencies {
 
-    implementation 'androidx.core:core-ktx:1.7.0'
-    implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.3.1'
-    implementation 'androidx.activity:activity-compose:1.3.1'
+    implementation 'androidx.core:core-ktx:1.9.0'
+    implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.5.1'
+    implementation 'androidx.activity:activity-compose:1.6.1'
     implementation "androidx.compose.ui:ui:$compose_version"
     implementation "androidx.compose.ui:ui-tooling-preview:$compose_version"
-    implementation 'androidx.compose.material3:material3:1.0.0-alpha02'
+    implementation 'androidx.compose.material3:material3:1.0.1'
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.4'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.0'
     androidTestImplementation "androidx.compose.ui:ui-test-junit4:$compose_version"
     debugImplementation "androidx.compose.ui:ui-tooling:$compose_version"
     debugImplementation "androidx.compose.ui:ui-test-manifest:$compose_version"
+
+
+    def accompanist_version = '0.25.0'
+    def coil_version = '2.1.0'
+    def datastore_version = '1.0.0'
+    def dagger_version = '2.43.2'
+    def hilt_version = '1.0.0'
+    def kotlin_version = '1.7.0'
+    def ktor_version = '2.1.0'
+    def retrofit_version = '2.9.0'
+    def room_version = '2.4.3'
+
+    //Architecture
+    implementation "androidx.compose.runtime:runtime-livedata:$compose_version"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-compose:2.5.1"
+
+    //Accompanist
+    implementation "com.google.accompanist:accompanist-navigation-animation:$accompanist_version"
+    implementation "com.google.accompanist:accompanist-pager:$accompanist_version"
+    implementation "com.google.accompanist:accompanist-pager-indicators:$accompanist_version"
+    implementation "com.google.accompanist:accompanist-placeholder:$accompanist_version"
+    implementation "com.google.accompanist:accompanist-swiperefresh:$accompanist_version"
+    implementation "com.google.accompanist:accompanist-systemuicontroller:$accompanist_version"
+
+    //Coil
+    implementation("io.coil-kt:coil-compose:$coil_version")
+
+    //Dagger - Hilt
+    implementation "com.google.dagger:hilt-android:$dagger_version"
+    kapt "com.google.dagger:hilt-android-compiler:$dagger_version"
+    kapt "androidx.hilt:hilt-compiler:$hilt_version"
+    implementation "androidx.hilt:hilt-navigation-compose:$hilt_version"
+
+    //DataStore
+    implementation "androidx.datastore:datastore-preferences:$datastore_version"
+
+    //Gson
+    implementation "com.google.code.gson:gson:2.10"
+
+    //Google Auth
+    implementation "com.google.android.gms:play-services-auth:20.4.0"
+
+    //Google Maps
+    implementation 'com.google.maps.android:maps-compose:2.5.3'
+    implementation 'com.google.android.gms:play-services-maps:18.1.0'
+
+    //Logback
+    implementation "ch.qos.logback:logback-classic:1.2.1" //1.2.1
+
+    //Ktor
+    implementation "io.ktor:ktor-client-core:$ktor_version"
+    implementation "io.ktor:ktor-client-android:$ktor_version"
+    implementation "io.ktor:ktor-client-content-negotiation:$ktor_version"
+    implementation "io.ktor:ktor-client-serialization:$ktor_version"
+    implementation "io.ktor:ktor-client-logging:$ktor_version"
+    implementation "io.ktor:ktor-serialization-kotlinx-json:$ktor_version"
+
+    //Navigation
+    implementation "androidx.navigation:navigation-compose:2.5.3"
+
+    //Paging 3
+    implementation "androidx.paging:paging-compose:1.0.0-alpha17"
+
+    //Palette
+    implementation "androidx.palette:palette-ktx:1.0.0"
+
+    //Retrofit
+    implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
+    implementation "com.squareup.retrofit2:converter-gson:$retrofit_version"
+    implementation("com.jakewharton.retrofit:retrofit2-kotlinx-serialization-converter:0.8.0")
+    implementation("com.squareup.okhttp3:okhttp-urlconnection:4.4.1")
+
+    //Room
+    implementation "androidx.room:room-runtime:$room_version"
+    kapt "androidx.room:room-compiler:$room_version"
+    implementation "androidx.room:room-ktx:$room_version"
+    implementation "androidx.room:room-paging:$room_version" //??
+
+    //Serialization
+    implementation "org.jetbrains.kotlinx:kotlinx-serialization-json:1.4.1"
+}
+
+kapt {
+    correctErrorTypes = true
 }
