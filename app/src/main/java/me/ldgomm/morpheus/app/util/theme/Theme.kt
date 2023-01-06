@@ -1,4 +1,4 @@
-package me.ldgomm.morpheus.ui.theme
+package me.ldgomm.morpheus.app.util.theme
 
 import android.app.Activity
 import android.os.Build
@@ -15,11 +15,16 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalView
 import androidx.core.view.ViewCompat
 
-private val DarkColorScheme =
-    darkColorScheme(primary = Purple80, secondary = PurpleGrey80, tertiary = Pink80)
+private val DarkColorScheme = darkColorScheme(
+    primary = Purple80,
+    secondary = PurpleGrey80,
+    tertiary = Pink80
+)
 
-private val LightColorScheme =
-    lightColorScheme(primary = Purple40, secondary = PurpleGrey40, tertiary = Pink40
+private val LightColorScheme = lightColorScheme(
+    primary = Purple40,
+    secondary = PurpleGrey40,
+    tertiary = Pink40
 
         /* Other default colors to override
     background = Color(0xFFFFFBFE),
@@ -29,12 +34,16 @@ private val LightColorScheme =
     onTertiary = Color.White,
     onBackground = Color(0xFF1C1B1F),
     onSurface = Color(0xFF1C1B1F),
-    */)
+    */
+)
 
 @Composable
-fun MorpheusTheme(darkTheme: Boolean = isSystemInDarkTheme(),
-    // Dynamic color is available on Android 12+
-                  dynamicColor: Boolean = true, content: @Composable () -> Unit) {
+fun MorpheusTheme(
+        darkTheme: Boolean = isSystemInDarkTheme(),
+        // Dynamic color is available on Android 12+
+        dynamicColor: Boolean = true,
+        content: @Composable () -> Unit
+) {
     val colorScheme = when {
         dynamicColor && Build.VERSION.SDK_INT >= Build.VERSION_CODES.S -> {
             val context = LocalContext.current
@@ -51,5 +60,9 @@ fun MorpheusTheme(darkTheme: Boolean = isSystemInDarkTheme(),
         }
     }
 
-    MaterialTheme(colorScheme = colorScheme, typography = Typography, content = content)
+    MaterialTheme(
+        colorScheme = colorScheme,
+        typography = Typography,
+        content = content
+    )
 }

@@ -1,4 +1,4 @@
-package me.ldgomm.morpheus.ui.theme
+package me.ldgomm.morpheus.app.util.theme
 
 import androidx.compose.ui.graphics.Color
 
