@@ -1,7 +1,7 @@
 package me.ldgomm.morpheus.app.main.model.remote.service.auth
 
-import me.ldgomm.morpheus.app.main.model.remote.entity.AuthenticationApiRequest
-import me.ldgomm.morpheus.app.main.model.remote.entity.AuthenticationApiResponse
+import me.ldgomm.morpheus.app.main.model.remote.entity.auth.AuthenticationApiRequest
+import me.ldgomm.morpheus.app.main.model.remote.entity.auth.AuthenticationApiResponse
 import javax.inject.Inject
 
 class AuthenticationService @Inject constructor(private val authenticationServiceableApi: AuthenticationServiceableApi) :

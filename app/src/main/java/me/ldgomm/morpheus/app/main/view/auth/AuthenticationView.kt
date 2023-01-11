@@ -23,8 +23,8 @@ import androidx.navigation.NavHostController
 import me.ldgomm.morpheus.R.drawable.google_logo
 import me.ldgomm.morpheus.app.main.controller.auth.StartActivityForResult
 import me.ldgomm.morpheus.app.main.controller.auth.signIn
-import me.ldgomm.morpheus.app.main.model.remote.entity.AuthenticationApiRequest
-import me.ldgomm.morpheus.app.main.model.remote.entity.AuthenticationApiResponse
+import me.ldgomm.morpheus.app.main.model.remote.entity.auth.AuthenticationApiRequest
+import me.ldgomm.morpheus.app.main.model.remote.entity.auth.AuthenticationApiResponse
 import me.ldgomm.morpheus.app.main.model.remote.service.HttpRequestState
 import me.ldgomm.morpheus.app.main.view.main.View
 import me.ldgomm.morpheus.app.main.viewmodel.auth.AuthenticationViewModel
@@ -98,10 +98,10 @@ fun AuthenticationView(navHostController: NavHostController,
                 val response =
                     (authenticationApiResponse as HttpRequestState.Success<AuthenticationApiResponse>).data.success
                 if (response) {
-                    authenticationViewModel.saveAuthenticationState(true)
+                    authenticationViewModel.saveAuthenticationState(isAuthenticated = true)
                     navigateToProfileView(navHostController)
                 } else {
-                    authenticationViewModel.saveSignInState(false)
+                    authenticationViewModel.saveSignInState(signedInValue = false)
                 }
             }
             else -> {

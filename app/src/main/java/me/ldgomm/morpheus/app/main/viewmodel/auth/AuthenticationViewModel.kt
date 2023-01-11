@@ -10,8 +10,8 @@ import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import me.ldgomm.morpheus.app.main.model.remote.entity.AuthenticationApiRequest
-import me.ldgomm.morpheus.app.main.model.remote.entity.AuthenticationApiResponse
+import me.ldgomm.morpheus.app.main.model.remote.entity.auth.AuthenticationApiRequest
+import me.ldgomm.morpheus.app.main.model.remote.entity.auth.AuthenticationApiResponse
 import me.ldgomm.morpheus.app.main.model.remote.service.HttpRequestState
 import me.ldgomm.morpheus.app.main.model.remote.service.auth.AuthenticationServiceable
 import me.ldgomm.morpheus.app.main.model.remote.service.auth.datastore.AccessDataStoreOperable

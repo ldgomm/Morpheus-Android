@@ -1,9 +1,7 @@
 package me.ldgomm.morpheus.app.main.model.remote.service.auth
 
-import me.ldgomm.morpheus.app.main.model.remote.entity.AuthenticationApiRequest
-import me.ldgomm.morpheus.app.main.model.remote.entity.AuthenticationApiResponse
-import retrofit2.http.Body
-import retrofit2.http.POST
+import me.ldgomm.morpheus.app.main.model.remote.entity.auth.AuthenticationApiRequest
+import me.ldgomm.morpheus.app.main.model.remote.entity.auth.AuthenticationApiResponse
 
 sealed interface AuthenticationServiceable {
 

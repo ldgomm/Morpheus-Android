@@ -1,4 +1,4 @@
-package me.ldgomm.morpheus.app.main.model.remote.entity
+package me.ldgomm.morpheus.app.main.model.remote.entity.auth
 
 import kotlinx.serialization.Serializable
 
