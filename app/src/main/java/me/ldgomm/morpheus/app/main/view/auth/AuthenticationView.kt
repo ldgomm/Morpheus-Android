@@ -18,7 +18,6 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
-import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import me.ldgomm.morpheus.R.drawable.google_logo
 import me.ldgomm.morpheus.app.main.controller.auth.StartActivityForResult
@@ -26,16 +25,15 @@ import me.ldgomm.morpheus.app.main.controller.auth.signIn
 import me.ldgomm.morpheus.app.main.model.remote.entity.auth.AuthenticationApiRequest
 import me.ldgomm.morpheus.app.main.model.remote.entity.auth.AuthenticationApiResponse
 import me.ldgomm.morpheus.app.main.model.remote.service.HttpRequestState
-import me.ldgomm.morpheus.app.main.view.main.View
+import me.ldgomm.morpheus.app.main.view.View
 import me.ldgomm.morpheus.app.main.viewmodel.auth.AuthenticationViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun AuthenticationView(navHostController: NavHostController,
-                       authenticationViewModel: AuthenticationViewModel = hiltViewModel()) {
+                       authenticationViewModel: AuthenticationViewModel) {
 
     val signedInState by authenticationViewModel.signedInState
-    //    val isAuthenticated by authenticationViewModel.isAuthenticatedState
 
     val successErrorMessageBarState by authenticationViewModel.successErrorMessageBarState
     val authenticationApiResponse by authenticationViewModel.authenticationApiResponse
@@ -98,7 +96,7 @@ fun AuthenticationView(navHostController: NavHostController,
                 val response =
                     (authenticationApiResponse as HttpRequestState.Success<AuthenticationApiResponse>).data.success
                 if (response) {
-                    authenticationViewModel.saveAuthenticationState(isAuthenticated = true)
+                    authenticationViewModel.saveAuthenticationState(isAuthenticated = "yes")
                     navigateToProfileView(navHostController)
                 } else {
                     authenticationViewModel.saveSignInState(signedInValue = false)
@@ -112,7 +110,7 @@ fun AuthenticationView(navHostController: NavHostController,
 }
 
 private fun navigateToProfileView(navHostController: NavHostController) {
-    navHostController.navigate(View.ProfileView.route) {
+    navHostController.navigate(View.ClientView.route) {
         popUpTo(View.AuthenticationView.route) {
             inclusive = true
         }

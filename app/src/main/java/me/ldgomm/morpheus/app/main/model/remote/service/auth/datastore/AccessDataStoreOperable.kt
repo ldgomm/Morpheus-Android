@@ -6,6 +6,6 @@ sealed interface AccessDataStoreOperable {
     suspend fun saveSignedInState(signIn: Boolean)
     fun readSignedInState(): Flow<Boolean>
 
-    suspend fun saveAuthenticationState(isAuthenticated: Boolean)
-    fun readAuthenticationState(): Flow<Boolean>
+    suspend fun saveAuthenticationState(isAuthenticated: String)
+    fun readAuthenticationState(): Flow<String>
 }

@@ -26,8 +26,8 @@ class AuthenticationViewModel @Inject constructor(private val accessDataStoreOpe
     private val _signedInState: MutableState<Boolean> = mutableStateOf(false)
     val signedInState: State<Boolean> = _signedInState
 
-    private val _isAuthenticatedState: MutableState<Boolean> = mutableStateOf(false)
-    val isAuthenticatedState: State<Boolean> = _isAuthenticatedState
+    private val _isAuthenticatedState: MutableState<String> = mutableStateOf("no")
+    val isAuthenticatedState: State<String> = _isAuthenticatedState
 
     private val _successErrorMessageBarState: MutableState<SuccessErrorMessageBar> =
         mutableStateOf(SuccessErrorMessageBar())
@@ -52,7 +52,7 @@ class AuthenticationViewModel @Inject constructor(private val accessDataStoreOpe
         }
     }
 
-    fun saveAuthenticationState(isAuthenticated: Boolean) {
+    fun saveAuthenticationState(isAuthenticated: String) {
         viewModelScope.launch(Dispatchers.IO) {
             accessDataStoreOperable.saveAuthenticationState(isAuthenticated)
         }
@@ -73,7 +73,6 @@ class AuthenticationViewModel @Inject constructor(private val accessDataStoreOpe
             }
         } catch (e: Exception) {
             Log.d(TAG, "verifyToken: Failed to verify token error: ${e.message}")
-
             _authenticationApiResponse.value = HttpRequestState.Error(e)
             _successErrorMessageBarState.value = SuccessErrorMessageBar(e.message)
         }

@@ -1,4 +1,4 @@
-package me.ldgomm.morpheus.app.main.model.remote.service.auth
+package me.ldgomm.morpheus.app.main.model.remote.service.user
 
 import dagger.Module
 import dagger.Provides
@@ -9,11 +9,11 @@ import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
-object AuthenticationServiceModule {
+object ClientServiceModule {
 
     @Singleton
     @Provides
-    fun provideAuthenticationService(retrofit: Retrofit): AuthenticationServiceableApi {
-        return retrofit.create(AuthenticationServiceableApi::class.java)
+    fun provideClientService(retrofit: Retrofit): ClientServiceableApi {
+        return retrofit.create(ClientServiceableApi::class.java)
     }
 }
